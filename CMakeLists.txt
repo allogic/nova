@@ -5,10 +5,6 @@ project(nova)
 enable_language(CUDA)
 
 # SETTINGS
-set(CMAKE_CUDA_STANDARD 14)
-
-set(CUDA_PROPAGATE_HOST_FLAGS OFF)
-
 set(ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(SOURCE_DIR ${ROOT_DIR}/source)
@@ -37,12 +33,10 @@ include_directories(${IMGUI_DIR} ${IMGUI_DIR}/examples)
 # TRACE
 include_directories(${SOURCE_DIR})
 
-file(GLOB NOVA_HEADER ${SOURCE_DIR}/*.h)
-file(GLOB NOVA_SOURCE ${SOURCE_DIR}/*.cpp)
+file(GLOB NOVA_SOURCES ${SOURCE_DIR}/*.*)
 
-add_executable(${PROJECT_NAME} ${ROOT_DIR}/main.cu
-        ${NOVA_SOURCE}
-        ${NOVA_HEADER}
+add_executable(${PROJECT_NAME} ${ROOT_DIR}/main.cpp
+        ${NOVA_SOURCES}
         ${IMGUI_HEADER}
         ${IMGUI_SOURCE})
 
